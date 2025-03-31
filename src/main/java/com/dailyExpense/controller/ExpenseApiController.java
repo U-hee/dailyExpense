@@ -36,21 +36,21 @@ public class ExpenseApiController {
     }
 
     @GetMapping("/api/expense/{id}")
-    public ResponseEntity<Expense> findExpense(@PathVariable("id") int id) {
+    public ResponseEntity<Expense> findExpense(@PathVariable("id") Long id) {
         Expense expense = expenseService.findById(id);
 
         return ResponseEntity.ok().body(expense);
     }
 
     @DeleteMapping("/api/expense/{id}")
-    public ResponseEntity<Void> deleteArticle(@PathVariable("id") int id) {
+    public ResponseEntity<Void> deleteArticle(@PathVariable("id") Long id) {
         expenseService.delete(id);
 
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/api/expense/{id}")
-    public ResponseEntity<Expense> updateExpense(@PathVariable("id") int id, @RequestBody UpdateExpenseRequest request) {
+    public ResponseEntity<Expense> updateExpense(@PathVariable("id") Long id, @RequestBody UpdateExpenseRequest request) {
         Expense updateExpense = expenseService.update(id, request);
 
         return ResponseEntity.ok().body(updateExpense);

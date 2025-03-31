@@ -23,16 +23,16 @@ public class ExpenseService {
         return expenseRepository.findAll();
     }
 
-    public Expense findById(int id) {
+    public Expense findById(Long id) {
         return expenseRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
     }
 
-    public void delete(int id) {
+    public void delete(Long id) {
         expenseRepository.deleteById(id);
     }
 
-    public Expense update(int id, UpdateExpenseRequest request) {
+    public Expense update(Long id, UpdateExpenseRequest request) {
         Expense expense = expenseRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: id"));
 

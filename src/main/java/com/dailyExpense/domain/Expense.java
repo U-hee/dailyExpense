@@ -5,6 +5,8 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -16,7 +18,7 @@ public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
-    private int id;
+    private Long id;
 
     @Column(nullable = true)
     private Long userId;
@@ -34,7 +36,11 @@ public class Expense {
     private String paymentMethod;
 
     private Long cardId;
+
+    @CreatedDate
     private Date createdAt;
+
+    @LastModifiedDate
     private Date updatedAt;
 
     @Builder
